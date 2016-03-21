@@ -17,11 +17,13 @@ public class PlayerController : MonoBehaviour
     public float fireRate;
 
     private Rigidbody rb;
+    private AudioSource audio;
     private float nextFire;
 	// Use this for initialization
 	void Start () 
     {
         rb = GetComponent<Rigidbody>();
+        audio = GetComponent<AudioSource>();
 	}
 
     // Update is called once per frame
@@ -31,6 +33,7 @@ public class PlayerController : MonoBehaviour
         {
             nextFire = Time.time + fireRate;
             Instantiate(shot, shotSpawn.position, shotSpawn.rotation);
+            audio.Play();
         }
     }
     void FixedUpdate()
